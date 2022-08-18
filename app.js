@@ -1,7 +1,13 @@
 const employee = function (employeeID, fullName, department, level, imageUrl) {
+ dom
+  this.employeeID = employeeID;
+  this.fullName = fullName;
+  this.department = department;
+
   this.department = department;
   this.employeeID = employeeID;
   this.fullName = fullName;
+ main
   this.level = level;
   this.imageUrl = imageUrl;
   this.salary = salary(level);
@@ -38,6 +44,51 @@ let employeeArray = [
   new employee("1006", "Hadi Ahmad", "Finance", "Mid-Senior", "google.com"),
 ];
 
+dom
+let table = document.createElement("table");
+let tbody = document.createElement("tbody");
+for (const employee of employeeArray) {
+  console.log(employee.fullName + " " + employee.salary);
+
+  createRow(employee);
+}
+
+function crateThead(employee) {
+  let thead = document.createElement("thead");
+  let tr = document.createElement("tr");
+
+  for (const iterator of Object.entries(employee)) {
+    if (iterator[0] != "imageUrl") {
+      let th = document.createElement("th");
+      th.textContent = iterator[0];
+      tr.append(th);
+    }
+  }
+  thead.append(tr);
+
+  return thead;
+}
+
+function createRow(employee) {
+  let tr = document.createElement("tr");
+  for (const iterator of Object.entries(employee)) {
+    if (iterator[0] != "imageUrl") {
+      let th = document.createElement("th");
+      th.textContent = iterator[1];
+      tr.append(th);
+    }
+  }
+
+  tbody.append(tr);
+}
+
+table.append(crateThead(employeeArray[0]));
+table.append(tbody);
+
+const main = document.getElementsByTagName("main");
+main[0].append(table);
+=======
 for (const employee of employeeArray) {
   console.log(" Name:" + employee.fullName + " -Salary:" + employee.salary);
 }
+ main
