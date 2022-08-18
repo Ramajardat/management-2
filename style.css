@@ -1,7 +1,6 @@
 
-dom
+
  table {
-    /* table-layout: fixed; */
      width: 100%;
     border-collapse: collapse;
     border: 3px solid rgb(25, 134, 218);
@@ -16,5 +15,3 @@ dom
 
 } 
 
-
- main
