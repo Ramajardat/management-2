@@ -87,7 +87,7 @@ table.append(tbody);
 
 const main = document.getElementsByTagName("main");
 main[0].append(table);
-=======
+
 for (const employee of employeeArray) {
   console.log(" Name:" + employee.fullName + " -Salary:" + employee.salary);
 }
