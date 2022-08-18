@@ -148,6 +148,7 @@ function createCard(employeeForm) {
 //   localStorage.setItem("employees", strArr);
 // }
 
+
 // function getFromLocal() {
 //   let jsonArr = localStorage.getItem("employees");
 //   let arr = JSON.parse(jsonArr);
@@ -161,3 +162,8 @@ function createCard(employeeForm) {
 // getFromLocal();
 
 // form.addEventListener("submit", render);
+
+const main = document.getElementsByTagName("main");
+main[0].append(table);
+
+
