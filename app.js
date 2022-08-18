@@ -1,169 +1,140 @@
-let allEmployees = [];
-
-const employee = function (employeeID, fullName, department, level, imageUrl) {
+function Employee(employeeID, fullName, department, level, imageURL) {
   this.employeeID = employeeID;
   this.fullName = fullName;
   this.department = department;
   this.level = level;
-  this.imageUrl = imageUrl;
-  this.salary = salary(level);
-  function salary(level) {
-    switch (level) {
-      case "Senior":
-        return getRandomInt(1500, 2000);
-      case "Mid-Senior":
-        return getRandomInt(1000, 1500);
-      case "Junior":
-        return getRandomInt(500, 1000);
-    }
-  }
-
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  }
-};
-let employeeArray = [
-  new employee("1000", "Ghazi Samer", "Administration", "Senior", "google.com"),
-  new employee("1001", "Lana Ali", "Finance", "Senior", "google.com"),
-  new employee("1002", "Tamara Ayoube", "Marketing", "Senior", "google.com"),
-  new employee(
-    "1003",
-    "Safi Walid",
-    "Administration",
-    "Mid-Senior",
-    "google.com"
-  ),
-  new employee("1004", "Omar Zaid", "Development", "Senior", "google.com"),
-  new employee("1005", "Rana Saleh", "Development", "Junior", "google.com"),
-  new employee("1006", "Hadi Ahmad", "Finance", "Mid-Senior", "google.com"),
-];
-
-let table = document.createElement("table");
-let tbody = document.createElement("tbody");
-for (const employee of employeeArray) {
-  console.log(" Name:" + employee.fullName + " Salary:" + employee.salary);
-
-  // createRow(employee);
+  this.imageURL = imageURL;
+  this.salary = salaryResult(level);
 }
+function salaryResult(level) {
+  switch (level) {
+    case "Junior":
+      return Math.floor(Math.random() * 500) + 500;
 
-//TODO: make rowFunction
-//TODO: make colFunction
-//TODO: make tableFunction
-
-// function crateThead(employee) {
-//     let thead = document.createElement("thead");
-//     let tr = document.createElement("tr");
-
-//     for (const iterator of Object.entries(employee)) {
-//         if (iterator[0] != "imageUrl") {
-//             let th = document.createElement("th");
-//             th.textContent = iterator[0];
-//             tr.append(th);
-//         }
-//     }
-//     thead.append(tr);
-
-//     return thead;
-// }
-
-// function createRow(employee) {
-//     let tr = document.createElement("tr");
-//     for (const iterator of Object.entries(employee)) {
-//         if (iterator[0] != "imageUrl") {
-//             let th = document.createElement("th");
-//             th.textContent = iterator[1];
-//             tr.append(th);
-//         }
-//     }
-
-//     tbody.append(tr);
-// }
-
-// table.append(crateThead(employeeArray[0]));
-// table.append(tbody);
-
-const main = document.getElementsByTagName("main");
-// main[0].append(table);
+    case "Mid-Senior":
+      return Math.floor(Math.random() * 500) + 1000;
+    case "Senior":
+      return Math.floor(Math.random() * 500) + 1500;
+  }
+}
 
 let form = document.getElementById("form");
-let cardDiv = document.getElementById("cardAdd");
-
-function getData(event) {
-  let id = document.getElementById("ID").value;
+let allEmployees = [];
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  let employeeId = document.getElementById("idNo").value;
   let fullName = document.getElementById("fullName").value;
-  let department = document.getElementById("department").value;
+  let department = document.getElementById("Department").value;
   let level = document.getElementById("level").value;
-  let imageUrl = document.getElementById("imageUrl").value;
-  let employeeForm = new employee(id, fullName, department, level, imageUrl);
-  console.log(employeeForm);
-  createCard(employeeForm);
-  event.preventDefault();
-}
+  let imageURL = document.getElementById("img1").value;
+  let newEmployee = new Employee(
+    employeeId,
+    fullName,
+    department,
+    level,
+    imageURL
+  );
+  addCard(newEmployee);
+  allEmployees.push(newEmployee);
+  localStorage.setItem("employees", JSON.stringify(allEmployees));
+});
+// ===========================================================================
+let cardContainer = document.getElementById("card-container");
 
-form.addEventListener("submit", getData);
-
-function createCard(employeeForm) {
-  let divCol = document.createElement("div");
-  divCol.className = "col-sm-6";
-  cardDiv.append(divCol);
-
+function addCard(newEmployee) {
   let card = document.createElement("div");
-  card.className = "card text-dark bg-info mb-3";
-  divCol.append(card);
+  cardContainer.append(card);
 
-  let imgCard = document.createElement("img");
-  imgCard.className = "card-img-top card text-dark bg-info mb-3";
-  imgCard.style.width = "100%";
+  let img = document.createElement("img");
+  img.setAttribute("src", newEmployee.imageURL);
+  card.append(img);
 
-  imgCard.src = employeeForm.imageUrl;
-  card.append(imgCard);
+  let cardText = document.createElement("div");
+  card.append(cardText);
 
-  let cardBody = document.createElement("div");
-  cardBody.className = "card-body";
-  card.append(cardBody);
+  let p0 = document.createElement("p");
+  p0.textContent = "Name : " + newEmployee.fullName;
+  cardText.append(p0);
 
-  let cardTitle = document.createElement("h5");
-  cardTitle.className = "card-title";
-  cardTitle.textContent = "Employee";
-  cardBody.append(cardTitle);
+  let p1 = document.createElement("p");
+  p1.textContent = "ID : " + newEmployee.employeeID;
+  cardText.append(p1);
 
-  let cardText = document.createElement("p");
-  cardText.className = "card-text";
-  cardText.textContent =
-    "Name: " +
-    employeeForm.fullName +
-    " - ID: " +
-    employeeForm.employeeID +
-    " Department: " +
-    employeeForm.department +
-    " - Level: " +
-    employeeForm.level;
-  cardBody.append(cardText);
+  let p2 = document.createElement("p");
+  p2.textContent = "Department : " + newEmployee.department;
+  cardText.append(p2);
+
+  let p3 = document.createElement("p");
+  p3.textContent = "Level : " + newEmployee.level;
+  cardText.append(p3);
+
+  let p4 = document.createElement("p");
+  p4.textContent = "Salary : " + newEmployee.salary + " $";
+  cardText.append(p4);
 }
 
-// function saveToLocal() {
-//   let strArr = JSON.stringify(allEmployees);
-//   localStorage.setItem("employees", strArr);
-// }
+let person01 = new Employee(
+  1000,
+  "Ghazi Samer",
+  "Administration",
+  "Senior",
+  "https://randomuser.me/api/portraits/men/3.jpg"
+);
+let person02 = new Employee(
+  1001,
+  "Lana Ali",
+  "Finance",
+  "Senior",
+  "https://randomuser.me/api/portraits/women/3.jpg"
+);
+let person03 = new Employee(
+  1002,
+  "Tamara Ayoub",
+  "Marketing",
+  "Senior",
+  "https://randomuser.me/api/portraits/women/6.jpg"
+);
+let person04 = new Employee(
+  1003,
+  "Safi Walid",
+  "Administration",
+  "Mid-Senior",
+  "https://randomuser.me/api/portraits/men/33.jpg"
+);
+let person05 = new Employee(
+  1004,
+  "Omar Zaid",
+  "Development",
+  "Senior",
+  "https://randomuser.me/api/portraits/men/7.jpg"
+);
+let person06 = new Employee(
+  1005,
+  "Rana Saleh",
+  "Development",
+  "Junior",
+  "https://randomuser.me/api/portraits/women/45.jpg"
+);
+let person07 = new Employee(
+  1006,
+  "Hadi Ahmad",
+  "Finance",
+  "Mid-Senior",
+  "https://randomuser.me/api/portraits/men/23.jpg"
+);
 
+let Employees = [
+  person01,
+  person02,
+  person03,
+  person04,
+  person05,
+  person06,
+  person07,
+];
 
-// function getFromLocal() {
-//   let jsonArr = localStorage.getItem("employees");
-//   let arr = JSON.parse(jsonArr);
-//   allEmployees = arr;
-//   arr.forEach((ele) => {
-//     print(ele);
-//   });
-//   console.log(arr);
-// }
-
-// getFromLocal();
-
-// form.addEventListener("submit", render);
-
-const main = document.getElementsByTagName("main");
-main[0].append(table);
-
-
+for (let i = 0; i < Employees.length; i++) {
+  addCard(Employees[i]);
+  allEmployees.push(Employees[i]);
+  localStorage.setItem("employees", JSON.stringify(allEmployees));
+}
