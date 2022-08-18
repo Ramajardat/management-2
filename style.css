@@ -1,47 +1,108 @@
-
-
-
-
-
-table {
-
-     width: 100%;
-    border-collapse: collapse;
-    border: 3px solid rgb(25, 134, 218);
-    background-color: rgb(222, 235, 243);
-    text-align: center;
-
-} 
-
- tr th {
-    border: 1px solid rgb(25, 134, 218) ;
-    text-align: center;
-
-} 
-
-
-
-#cardAdd {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	gap: 20x;
-	max-width: 90%;
-	margin: 0 auto;
-	padding: 20px 10px;
-}
-#cardAdd > div {
-	box-shadow: 0 1px 0 rgba(66, 101, 188, 0.2);
-	margin: 5px;
-	text-align: center;
-	width: 100%;
-	max-width: 20%;
+*{
+    margin: 0;
+    padding: 0;
 }
 
-img {
-	width: 70%;
+body {
+	background-color: #EAE7DC;
+}
 
+header{
+    background-color:#D8C3A5;
+    display: flex;
+    justify-content: left;
 }
 
 
+header #header-menu{
+    list-style: none;
+    padding: 1%;
+    display: flex;
+    gap: 10%;
+}
+
+
+header #header-menu li > a{
+    text-decoration: none;
+    color: white;
+    transition: all 1s;
+}
+
+header #header-menu li > a:hover{
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: rgb(168, 140, 89);
+}
+
+
+footer{
+    background-color:#D8C3A5;
+    display: flex;
+    justify-content: left;
+}
+
+footer #social-accounts{
+    list-style: none;
+    padding: 1%;
+    display: flex;
+    gap: 30%;
+
+}
+
+footer #social-accounts li > a{
+    text-decoration: none;
+    color: Black;
+    transition: all 1s;
+}
+
+
+footer #social-accounts li > a:hover{
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: #907163;
+}
+.cont{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+
+#card-container{
+    display: flex;
+width: 25%;
+margin-top: 20px;
+flex-wrap: nowrap;
+
+
+
+}
+#card-container > div{
+border: 1px solid;
+border-radius: 6px;
+background-color:#7395AE;
+width: 50%;
+margin-left: 10px;
+padding: 10px;
+}
+p{
+    font-size: small;
+    margin: 0;
+color: white;}
+
+img{
+/* border-radius: 10%; */
+}
+
+@media screen and (max-width:1115px) {
+ #card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    }
+    #card-container > div{
+        width: 30%;
+    }
+  }
