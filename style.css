@@ -1,47 +1,86 @@
-
-
-
-
-
-table {
-
-     width: 100%;
-    border-collapse: collapse;
-    border: 3px solid rgb(25, 134, 218);
-    background-color: rgb(222, 235, 243);
-    text-align: center;
-
-} 
-
- tr th {
-    border: 1px solid rgb(25, 134, 218) ;
-    text-align: center;
-
-} 
-
-
-
-#cardAdd {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	gap: 20x;
-	max-width: 90%;
-	margin: 0 auto;
-	padding: 20px 10px;
-}
-#cardAdd > div {
-	box-shadow: 0 1px 0 rgba(66, 101, 188, 0.2);
-	margin: 5px;
-	text-align: center;
-	width: 100%;
-	max-width: 20%;
+*{
+    margin: 0;
+    padding: 0;
 }
 
-img {
-	width: 70%;
+body {
+	background-color: #EAE7DC;
+}
 
+header{
+    background-color:#D8C3A5;
+    display: flex;
+    justify-content: left;
 }
 
 
+header #header-menu{
+    list-style: none;
+    padding: 1%;
+    display: flex;
+    gap: 10%;
+}
+
+
+header #header-menu li > a{
+    text-decoration: none;
+    color: white;
+    transition: all 1s;
+}
+
+header #header-menu li > a:hover{
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: rgb(168, 140, 89);
+}
+
+#main{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main > table {
+width: 50%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+
+}
+th{
+background-color: #ccb18c;
+    padding: 20px;
+    
+}
+tr:nth-child(odd) {background-color: #D8C3A5;}
+
+
+
+footer{
+    background-color:#D8C3A5;
+    display: flex;
+    justify-content: left;
+}
+
+footer #social-accounts{
+    list-style: none;
+    padding: 1%;
+    display: flex;
+    gap: 30%;
+
+}
+
+footer #social-accounts li > a{
+    text-decoration: none;
+    color: Black;
+    transition: all 1s;
+}
+
+footer #social-accounts li > a:hover{
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: #907163;
+}
