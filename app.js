@@ -38,12 +38,11 @@ form.addEventListener("submit", function (e) {
   allEmployees.push(newEmployee);
   localStorage.setItem("employees", JSON.stringify(allEmployees));
 });
-// ===========================================================================
-let cardContainer = document.getElementById("card-container");
+let cardContainer = document.getElementById("cardsDiv");
 
 function addCard(newEmployee) {
   let card = document.createElement("div");
-  cardContainer.append(card);
+  cardsDiv.append(card);
 
   let img = document.createElement("img");
   img.setAttribute("src", newEmployee.imageURL);
@@ -138,3 +137,4 @@ for (let i = 0; i < Employees.length; i++) {
   allEmployees.push(Employees[i]);
   localStorage.setItem("employees", JSON.stringify(allEmployees));
 }
+
