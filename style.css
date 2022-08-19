@@ -1,6 +1,10 @@
 
 
+
+
+
 table {
+
      width: 100%;
     border-collapse: collapse;
     border: 3px solid rgb(25, 134, 218);
@@ -14,5 +18,30 @@ table {
     text-align: center;
 
 } 
+
+
+
+#cardAdd {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 20x;
+	max-width: 90%;
+	margin: 0 auto;
+	padding: 20px 10px;
+}
+#cardAdd > div {
+	box-shadow: 0 1px 0 rgba(66, 101, 188, 0.2);
+	margin: 5px;
+	text-align: center;
+	width: 100%;
+	max-width: 20%;
+}
+
+img {
+	width: 70%;
+
+}
 
 

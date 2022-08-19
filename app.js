@@ -1,3 +1,5 @@
+let allEmployees = [];
+
 const employee = function (employeeID, fullName, department, level, imageUrl) {
   this.employeeID = employeeID;
   this.fullName = fullName;
@@ -41,42 +43,124 @@ let employeeArray = [
 let table = document.createElement("table");
 let tbody = document.createElement("tbody");
 for (const employee of employeeArray) {
-  console.log(employee.fullName + " " + employee.salary);
+  console.log(" Name:" + employee.fullName + " Salary:" + employee.salary);
 
-  createRow(employee);
+  // createRow(employee);
 }
 
-function crateThead(employee) {
-  let thead = document.createElement("thead");
-  let tr = document.createElement("tr");
+//TODO: make rowFunction
+//TODO: make colFunction
+//TODO: make tableFunction
 
-  for (const iterator of Object.entries(employee)) {
-    if (iterator[0] != "imageUrl") {
-      let th = document.createElement("th");
-      th.textContent = iterator[0];
-      tr.append(th);
-    }
-  }
-  thead.append(tr);
+// function crateThead(employee) {
+//     let thead = document.createElement("thead");
+//     let tr = document.createElement("tr");
 
-  return thead;
+//     for (const iterator of Object.entries(employee)) {
+//         if (iterator[0] != "imageUrl") {
+//             let th = document.createElement("th");
+//             th.textContent = iterator[0];
+//             tr.append(th);
+//         }
+//     }
+//     thead.append(tr);
+
+//     return thead;
+// }
+
+// function createRow(employee) {
+//     let tr = document.createElement("tr");
+//     for (const iterator of Object.entries(employee)) {
+//         if (iterator[0] != "imageUrl") {
+//             let th = document.createElement("th");
+//             th.textContent = iterator[1];
+//             tr.append(th);
+//         }
+//     }
+
+//     tbody.append(tr);
+// }
+
+// table.append(crateThead(employeeArray[0]));
+// table.append(tbody);
+
+const main = document.getElementsByTagName("main");
+// main[0].append(table);
+
+let form = document.getElementById("form");
+let cardDiv = document.getElementById("cardAdd");
+
+function getData(event) {
+  let id = document.getElementById("ID").value;
+  let fullName = document.getElementById("fullName").value;
+  let department = document.getElementById("department").value;
+  let level = document.getElementById("level").value;
+  let imageUrl = document.getElementById("imageUrl").value;
+  let employeeForm = new employee(id, fullName, department, level, imageUrl);
+  console.log(employeeForm);
+  createCard(employeeForm);
+  event.preventDefault();
 }
 
-function createRow(employee) {
-  let tr = document.createElement("tr");
-  for (const iterator of Object.entries(employee)) {
-    if (iterator[0] != "imageUrl") {
-      let th = document.createElement("th");
-      th.textContent = iterator[1];
-      tr.append(th);
-    }
-  }
+form.addEventListener("submit", getData);
 
-  tbody.append(tr);
+function createCard(employeeForm) {
+  let divCol = document.createElement("div");
+  divCol.className = "col-sm-6";
+  cardDiv.append(divCol);
+
+  let card = document.createElement("div");
+  card.className = "card text-dark bg-info mb-3";
+  divCol.append(card);
+
+  let imgCard = document.createElement("img");
+  imgCard.className = "card-img-top card text-dark bg-info mb-3";
+  imgCard.style.width = "100%";
+
+  imgCard.src = employeeForm.imageUrl;
+  card.append(imgCard);
+
+  let cardBody = document.createElement("div");
+  cardBody.className = "card-body";
+  card.append(cardBody);
+
+  let cardTitle = document.createElement("h5");
+  cardTitle.className = "card-title";
+  cardTitle.textContent = "Employee";
+  cardBody.append(cardTitle);
+
+  let cardText = document.createElement("p");
+  cardText.className = "card-text";
+  cardText.textContent =
+    "Name: " +
+    employeeForm.fullName +
+    " - ID: " +
+    employeeForm.employeeID +
+    " Department: " +
+    employeeForm.department +
+    " - Level: " +
+    employeeForm.level;
+  cardBody.append(cardText);
 }
 
-table.append(crateThead(employeeArray[0]));
-table.append(tbody);
+// function saveToLocal() {
+//   let strArr = JSON.stringify(allEmployees);
+//   localStorage.setItem("employees", strArr);
+// }
+
+// function getFromLocal() {
+//   let jsonArr = localStorage.getItem("employees");
+//   let arr = JSON.parse(jsonArr);
+//   allEmployees = arr;
+//   arr.forEach((ele) => {
+//     print(ele);
+//   });
+//   console.log(arr);
+// }
+
+// getFromLocal();
+
+// form.addEventListener("submit", render);
 
 const main = document.getElementsByTagName("main");
 main[0].append(table);

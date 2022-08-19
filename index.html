@@ -48,24 +48,79 @@
                 <a class="nav-link" href="./accounting.html">Accounting</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
     </header>
 
     <br /><br />
-    <main></main>
+    <main>
+      <div class="container w-50">
+        <form id="form">
+          <div class="mb-3">
+            <label for="ID" class="form-label">ID</label>
+            <input
+              type="number"
+              class="form-control"
+              id="ID"
+              aria-describedby="idHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full name</label>
+            <input type="name" class="form-control" id="fullName" />
+          </div>
+          <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              id="department"
+            >
+              <option value="Administration">Choose your department</option>
+
+              <option value="Administration">Administration</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Development">Development</option>
+              <option value="Finance">Finance</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="level" class="form-label">Level</label>
+
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              id="level"
+            >
+              <option value="Administration">Choose your level</option>
+
+              <option>Junior</option>
+              <option value="Mid-Senior">Mid-Senior</option>
+              <option value="Senior">Senior</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="imageUrl" class="form-label">Image URL</label>
+            <input
+              type="url"
+              class="form-control"
+              id="imageUrl"
+              aria-describedby="imageUrl"
+            />
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary" id="submitButton">
+            Submit
+          </button>
+        </form>
+      </div>
+      <br />
+      <br />
+
+      <div class="row" id="cardAdd"></div>
+    </main>
 
     <div class="container">
       <footer
