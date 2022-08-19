@@ -80,4 +80,3 @@ table.append(tbody);
 
 const main = document.getElementsByTagName("main");
 main[0].append(table);
-
