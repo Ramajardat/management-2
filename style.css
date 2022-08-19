@@ -4,11 +4,12 @@
 }
 
 body {
-	background-color: #EAE7DC;
-}
+	background-color: #D3E3FC;
+}   
+
 
 header{
-    background-color:#D8C3A5;
+    background-color:#00887A;
     display: flex;
     justify-content: left;
 }
@@ -28,20 +29,16 @@ header #header-menu li > a{
     transition: all 1s;
 }
 
-header #header-menu li > a:hover{
-    cursor: pointer;
-    font-size: 1.25rem;
-    color: rgb(168, 140, 89);
-}
+
 
 
 footer{
-    background-color:#D8C3A5;
+    background-color:#00887A;
     display: flex;
     justify-content: left;
 }
 
-footer #social-accounts{
+footer #social{
     list-style: none;
     padding: 1%;
     display: flex;
@@ -49,18 +46,14 @@ footer #social-accounts{
 
 }
 
-footer #social-accounts li > a{
+footer #social li > a{
     text-decoration: none;
     color: Black;
     transition: all 1s;
 }
 
 
-footer #social-accounts li > a:hover{
-    cursor: pointer;
-    font-size: 1.25rem;
-    color: #907163;
-}
+
 .cont{
     display: flex;
     justify-content: center;
@@ -69,34 +62,32 @@ footer #social-accounts li > a:hover{
 }
 
 
-#card-container{
+#cardsDiv{
     display: flex;
-width: 25%;
+width: 55%;
 margin-top: 20px;
 flex-wrap: nowrap;
 
 
 
 }
-#card-container > div{
+#cardsDiv> div{
 border: 1px solid;
 border-radius: 6px;
-background-color:#7395AE;
+background-color:#FFCCBC;
 width: 50%;
-margin-left: 10px;
+margin-left: 5px;
 padding: 10px;
 }
 p{
-    font-size: small;
+    font-size: medium;
     margin: 0;
-color: white;}
+color: black;}
 
-img{
-/* border-radius: 10%; */
-}
+
 
 @media screen and (max-width:1115px) {
- #card-container{
+#cardsDiv{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -105,4 +96,4 @@ img{
     #card-container > div{
         width: 30%;
     }
-  }
+}
