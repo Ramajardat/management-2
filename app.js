@@ -1,3 +1,5 @@
+let allEmployees = [];
+
 const employee = function (employeeID, fullName, department, level, imageUrl) {
   this.employeeID = employeeID;
   this.fullName = fullName;
@@ -41,7 +43,7 @@ let employeeArray = [
 let table = document.createElement("table");
 let tbody = document.createElement("tbody");
 for (const employee of employeeArray) {
-  console.log(employee.fullName + " " + employee.salary);
+  console.log(" Name:" + employee.fullName + " Salary:" + employee.salary);
 
   // createRow(employee);
 }
@@ -86,7 +88,7 @@ const main = document.getElementsByTagName("main");
 // main[0].append(table);
 
 let form = document.getElementById("form");
-let cardAdd = document.getElementById("cardAdd");
+let cardDiv = document.getElementById("cardAdd");
 
 function getData(event) {
   let id = document.getElementById("ID").value;
@@ -108,12 +110,13 @@ function createCard(employeeForm) {
   cardDiv.append(divCol);
 
   let card = document.createElement("div");
-  card.className = "card";
+  card.className = "card text-dark bg-info mb-3";
   divCol.append(card);
 
   let imgCard = document.createElement("img");
-  imgCard.className = "card-img-top";
-  imgCard.style.width = "50px";
+  imgCard.className = "card-img-top card text-dark bg-info mb-3";
+  imgCard.style.width = "100%";
+
   imgCard.src = employeeForm.imageUrl;
   card.append(imgCard);
 
@@ -123,7 +126,7 @@ function createCard(employeeForm) {
 
   let cardTitle = document.createElement("h5");
   cardTitle.className = "card-title";
-  cardTitle.textContent = "hi";
+  cardTitle.textContent = "Employee";
   cardBody.append(cardTitle);
 
   let cardText = document.createElement("p");
@@ -139,3 +142,22 @@ function createCard(employeeForm) {
     employeeForm.level;
   cardBody.append(cardText);
 }
+
+// function saveToLocal() {
+//   let strArr = JSON.stringify(allEmployees);
+//   localStorage.setItem("employees", strArr);
+// }
+
+// function getFromLocal() {
+//   let jsonArr = localStorage.getItem("employees");
+//   let arr = JSON.parse(jsonArr);
+//   allEmployees = arr;
+//   arr.forEach((ele) => {
+//     print(ele);
+//   });
+//   console.log(arr);
+// }
+
+// getFromLocal();
+
+// form.addEventListener("submit", render);
